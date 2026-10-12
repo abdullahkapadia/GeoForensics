@@ -1,0 +1,54 @@
+# Environment & Secrets (CRITICAL: Never commit API keys)
+.env
+*.env
+backend/.env
+backend/*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Uploads & Temporary Media (Prevent leaking personal images)
+backend/uploads/*
+!backend/uploads/.gitkeep
+C:/Users/*
+.tempmediaStorage/
+.user_uploaded/
+
+# Node & Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
+.vite/
+*.local
+
+# IDE & OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
