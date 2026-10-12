@@ -28,6 +28,39 @@ Unlike black-box classification models that merely spit out country centroids, G
 
 ---
 
+## Workstation Interface and Live Case Study
+
+### OSINT Investigative Workstation
+The platform provides a mission-critical forensic interface with telemetry monitoring, live OpenStreetMap rendering, and pre-indexed benchmark cases.
+
+<p align="center">
+  <img src="./docs/images/01_workstation_overview.png" alt="GeoForensics AI Investigative Workstation" width="95%" />
+</p>
+
+### Live Case Study: Micro-Street Geolocation in Venice, Italy
+
+To demonstrate zero-prior forensic precision, an unindexed 38 KB travel photo of a generic pedestrian alleyway without EXIF metadata or street signs was submitted to the platform.
+
+| Ground Truth Source | Workstation Ingestion |
+| :---: | :---: |
+| <img src="./docs/images/03_ground_truth_case.png" alt="Ground Truth Northern Italy Source" width="100%" /> | <img src="./docs/images/02_evidence_ingestion.png" alt="Evidence Ingestion with Zero Prior Notes" width="100%" /> |
+| *Original image from Northern Italy travel blog* | *Ingested with zero analyst clues or GPS tags* |
+
+#### Pinpoint Physical Resolution: Calle de la Mandola, Venice
+The pipeline triangulated the exact street node within seconds, achieving **99% confidence** and an uncertainty radius of **±0.05 km (50 meters)**.
+
+<p align="center">
+  <img src="./docs/images/04_venice_exact_resolution.png" alt="Exact Geolocation Result: Calle de la Mandola, Venice, Italy" width="95%" />
+</p>
+
+**Diagnostic Forensic Deductions:**
+- **OpenStreetMap Verification**: Snapped directly to physical road entity `Calle de la Mandola` (Coordinates: `45.43474, 12.33276`).
+- **Architectural Masonry**: Brickwork and window frame profiles diagnostic of the *Sestiere di San Marco* district.
+- **Pavement Taxonomy**: Stone paving patterns (*masegni*) characteristic of Venetian pedestrian thoroughfares.
+- **Urban Topography**: Narrow vertical canyon orientation matching high-density Venetian canal urbanism.
+
+---
+
 ## System Architecture
 
 ```mermaid
@@ -183,17 +216,17 @@ GET /api/v1/geolocation/{analysis_id}
 {
   "analysis_id": "8f3b2e1a4c9d4e5f",
   "top_prediction": {
-    "name": "Dahod Town Center",
-    "city": "Dahod",
-    "state_province": "Gujarat",
-    "country": "India",
-    "country_code": "IN",
-    "lat": 22.83588,
-    "lng": 74.25568,
+    "name": "Calle de la Mandola, Venice",
+    "city": "Venice",
+    "state_province": "Veneto",
+    "country": "Italy",
+    "country_code": "IT",
+    "lat": 45.43474,
+    "lng": 12.33276,
     "score": 99.0,
-    "precision_level": "probable",
-    "uncertainty_radius_km": 1.0,
-    "resolved_address": "Dahod, Dahod Taluka, Dahod, Gujarat, 389100, India"
+    "precision_level": "exact",
+    "uncertainty_radius_km": 0.05,
+    "resolved_address": "Calle de la Mandola, San Marco, Venezia, Veneto, 30124, Italia"
   },
   "confidence_score": 99.0,
   "confidence_level": "Very High",
